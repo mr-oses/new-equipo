@@ -15,7 +15,7 @@ db:
   ports:
     - 3306:3306
   volumes:
-    - ~/docker/mysql-data-new-equipo:/var/lib/mysql
+    - c:/Usuarios/Lady/docker/mysql-data-new-equipo:/var/lib/mysql
   environment:
     MYSQL_USER: 'new_equipo'
     MYSQL_PASSWORD: '123456'

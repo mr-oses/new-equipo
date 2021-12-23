@@ -3,4 +3,89 @@
     height: 300px;
     border-radius: 5px;
     box-shadow: 0px 0px 15px -5px #888888;
-  }
+}
+
+
+/* IMG */
+
+#logo {
+    max-width: 90px;
+}
+
+#historias-img-1 {
+    object-fit: cover;
+}
+
+#historias-img-2 {
+    max-width: 300px;
+}
+
+
+#historias-img-1 {
+    object-fit: cover;
+}
+
+/* BUTTONS */
+button {
+    background-color: #0099FF !important;
+    color: #FFFFFF !important;
+}
+
+/* LI */
+li {
+    list-style: none;
+}
+
+/* SECTION */
+
+
+
+.card_overlap {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 0.25rem;
+    bottom: 20px;
+    margin: auto;
+}
+
+/* BORDERS */
+
+#investigacion_e_informes {
+    border-top: 1px solid #929292;
+}
+
+.no-border-card {
+    border-style: none !important;
+}
+
+
+
+/* COLORS */
+
+.dark-blue-background {
+    background-color: #034663 !important;
+}
+
+.grey-background {
+    background-color: #e9eaec;
+}
+
+.white-color {
+    color: #FFFFFF !important;
+}
+
+.cyan-color {
+    color: #0099FF;
+}
+
+.cyan-card {
+    background-color: #0099FF;
+}
