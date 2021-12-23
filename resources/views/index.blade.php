@@ -49,7 +49,7 @@
         </div>
 
 
-        <div class="card-body p-5 text-center grey-background white-color">
+        <div class="card-body p-5 text-center grey-background">
             <div>
                 <h3>Género</h3>
                 <img src="{{asset('img/icon_gender-intro.png')}}" class="img-fluid pt-2" alt="ícono género inclusivo">
