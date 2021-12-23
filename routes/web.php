@@ -13,17 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Route::get('/configDB', 'SitioController@configDB')->name('configDB');
+
 Auth::routes();
 
 Route::get('/', 'SitioController@index')->name('index');
-Route::get('/home', 'HomeController@index')->name('home');
 
-
-Route::get('/donations', 'DonationController@index')->name('donations.index')->middleware('auth');
-Route::get('/donationsa/store', 'DonationController@store')->name('donations.store')->middleware('auth');
-/*
-Route::get('/admin/services', 'Admin\ServiceController@index')->name('admin.services');
-    Route::get('/admin/services/create', 'Admin\ServiceController@create')->name('admin.services.create');
-    Route::get('/admin/services/{id}/edit', 'Admin\ServiceController@edit')->name('admin.services.edit');
-    Route::post('/admin/services/{id}', 'Admin\ServiceController@update')->name('admin.services.update');
-    Route::delete('/admin/services/{id}', 'Admin\ServiceController@destroy')->name('admin.services.destroy'); */
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/donations', 'DonationController@index')->name('donations.index');
+    Route::get('/donations/store', 'DonationController@store')->name('donations.store');
+    Route::post('/donations/store', 'DonationController@store')->name('donations.store');
+    Route::get('/donations/{id}/edit', 'DonationController@edit')->name('donations.edit');
+    Route::post('/donations/{id}', 'DonationController@update')->name('donations.update');
+    Route::post('/donations/{id}/destroy', 'DonationController@destroy')->name('donations.destroy'); //TODO Ver de implementar con AJAX.
+});

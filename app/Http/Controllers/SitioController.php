@@ -5,9 +5,21 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Log;
 
 class SitioController extends Controller
 {
+    public function configDB(){
+        try{
+            Artisan::call('migrate');
+            Artisan::call('storage:link');
+            return 'Configuración Exitosa';
+        }catch(\Exception $e){
+            Log::error($e);
+        }
+    }
+
     public function index(){
         $users = User::with('donations')->first();
         //dd($users->donations->first()->monto);

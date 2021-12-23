@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css_custom_files')
-    <link href="{{ asset("css/new-equipo.css")}}" rel="stylesheet" type="text/css"/>
+
 @stop
 
 @section('content')
@@ -27,7 +27,6 @@
 
     @section('scripts')
         <script>
-            alert();
             const DATA = {
                 donationsXDay: @json($donations),
                 totalDonations: @json($totalDonations)

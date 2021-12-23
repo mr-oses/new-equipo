@@ -10,8 +10,6 @@
 
     @section('content')
         <h1>Mis Donaciones</h1>
-        <a href="{{ route('donations.store') }}">donar</a>
-
     @endsection
 
     @section('scripts')

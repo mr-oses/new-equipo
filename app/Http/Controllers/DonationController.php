@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Donation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,22 +14,43 @@ class DonationController extends Controller
     }
 
     public function store(Request $request){
-        $donation = new Donation();
-        // dd($donation);
-        // dd(Auth::user());
-        $donation->user()->associate(Auth::user());
-        $donation->monto = 1800;
+        try{
+            $donation = new Donation();
+            $donation->user()->associate(Auth::user());
+            $donation->monto = $request->montoDonacion;
+            $donation->save();
 
-        $donation->save();
+            return redirect()->back()->with('success', 'La donación se realizó correctamente.');
+        }catch(Exception $e){
+            return redirect()->back()->with('error', 'Se produjo un error al intentar realizar la donación.');
+        }
+    }
 
-        return redirect()->back()->with('success', 'La donación se realizó correctamente.');
+    public function edit($id){
+        $donation = Donation::findOrFail($id);
+
+        return view('donation.edit', compact('donation'));
     }
 
     public function update(Request $request, $id){
+        try{
+            $donation = Donation::findOrFail($id);
+            $donation->monto = $request->monto;
+            $donation->save();
+
+            return redirect()->back()->with('success', 'La donación se actualizó correctamente.');
+        }catch(Exception $e){
+            return redirect()->back()->with('error', 'Se produjo un error al intentar actualizar la donación.');
+        }
 
     }
 
     public function destroy($id){
-        Donation::findOrFail($id)->delete();
+        try{
+            Donation::findOrFail($id)->delete();
+            //TODO ver si se implementa con ajax para ver que retornar.
+        }catch(Exception $e){
+
+        }
     }
 }

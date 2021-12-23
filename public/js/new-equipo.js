@@ -1,7 +1,5 @@
 $(document).ready(function(){
 
-console.log(DATA.totalDonations.total);
-
 /* function count(){
     var counter = { var: 0 };
     TweenMax.to(counter, 3, {
@@ -145,7 +143,7 @@ console.log(DATA.totalDonations.total);
             series.appear(1000);
             chart.appear(1000, 100);
 
-            const numero=document.getElementById('numero')
+           /*  const numero=document.getElementById('numero')
 
             let cantidad=0
             let tiempo=setInterval(() => {
@@ -154,6 +152,6 @@ console.log(DATA.totalDonations.total);
                 if(cantidad >= DATA.totalDonations.total){
                     clearInterval(tiempo)
                 }
-            }, 1);
+            }, 1); */
 
         });
