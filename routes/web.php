@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/', 'SitioController@index')->name('index');
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function () {
     Route::get('/donations', 'DonationController@index')->name('donations.index');
     Route::get('/donations/store', 'DonationController@store')->name('donations.store');
     Route::get('/donations/create', 'DonationController@create')->name('donations.create');

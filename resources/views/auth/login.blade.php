@@ -51,11 +51,7 @@
                                     </div>
                                 </div>
 
-                                <!--                                <div class="form-group mt-3">
-                                    <div class="d-flex flex-column row">
-                                        <button type="submit" class="btn btn-primary col-md-4 m-auto">
-                                            Iniciar sesión
-                                        </button> -->
+                                <!-- Forgot yor password? -->
                                 <!--                 @if (Route::has('password.request'))
                 <a class="btn btn-link" href="{{ route('password.request') }}">
                     {{ __('Forgot Your Password?') }}
