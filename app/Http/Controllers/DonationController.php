@@ -5,12 +5,21 @@ namespace App\Http\Controllers;
 use Exception;
 use App\Donation;
 use Illuminate\Http\Request;
+use App\Services\SitioService;
 use Illuminate\Support\Facades\Auth;
 
 class DonationController extends Controller
 {
     public function index(){
-         return view('donation.index');
+        $totales = SitioService::getTotales();
+
+        return view('donation.index', compact('totales'));
+    }
+
+    public function create() {
+        $totales = SitioService::getTotales();
+
+        return view('donation.create', compact('totales'));
     }
 
     public function store(Request $request){

@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-<div class="container-fluid">
+<div>
     <!-- Main -->
 
 
@@ -49,7 +49,7 @@
         </div>
 
 
-        <div class="card-body p-5 text-center grey-background white-color">
+        <div class="card-body p-5 text-center grey-background">
             <div>
                 <h3>Género</h3>
                 <img src="{{asset('img/icon_gender-intro.png')}}" class="img-fluid pt-2" alt="ícono género inclusivo">
@@ -215,52 +215,8 @@
     </div>
 
 </section>
-<!-- ACTUA -->
-<section id="actua" class="mt-3">
-    <div class="container-fluid row d-flex align-items-center">
-        <!-- actua header -->
-        <div class="card-body text-center px-5 pt-2 blockquote row d-flex flex-column">
-            <h2 class="card-title cyan-color col-md-4 m-auto p-1">Sumate</h2>
-            <p class="card-text  pt-4 col-md-8 m-auto"> <em>Los niños necesitan campeones. Participa, alza la voz, hazte voluntario o donante y otorga a cada niño una oportunidad justa para tener éxito.</em></p>
-        </div>
-        <!-- actua main -->
-        <div class="container-fluid row d-flex align-items-center justify-content-center">
-            <div class="col-md-6 h-100 card no-border-card m-auto">
-                <!-- gráfico -->
-                <div class="h-100 ">
-                    <div id="chartdiv">
-                    </div>
-            </div>
-            <div class="col-md-6 card h-100 no-border-card">
-                <div class="card-body">
-                    <div class="row row-cols-2">
-                        <p class="card-text col-md-6 w-auto fs-6"> <b>Número total de donaciones:</b> </p>
-                        <div class="numero card-text fs-6" id="numero">
-                        </div>
-                    </div>
-                    <div class="row row-cols-2 ">
-                        <p class="card-text col-md-6 w-auto fs-6"><b> Objetivo del 2022:</b></p>
-                        <span class="card-text fs-6">$16.000.000</span>
-                    </div>
-                    <div class="row row-cols-2">
-                        <p class="card-text col-md-6 w-auto fs-6"><b> Falta recaudar:</b></p>
-                        <span class="card-text fs-6">
-                            <!-- ACA HABRÍA QUE IMPLEMENTAR LA RESTA -->
-                        </span>
-                    </div>
-                    <div class="pt-3">
-                        <h3 class="card-title">Tu aporte salva vidas</h3>
-                        <p class="card-text">Con $50 por día colaborás para incorporar alimentos nutritivos en la vianda de 4 chicas o chicos durante un mes.</p>
-                        <div class="d-flex justify-content-center">
-                            <button class="w-25">Doná</button>
-                        </div>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 
 
 <!-- /Main -->
@@ -285,11 +241,8 @@
 
     @section('scripts')
         <script>
-            const DATA = {
-                donationsXDay: @json($donations),
-                totalDonations: @json($totalDonations)
-            }
+
         </script>
-        <script src="{{ asset('js/new-equipo.js') }}"></script>
+
     @endsection
 </html>

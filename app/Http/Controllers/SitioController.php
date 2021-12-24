@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Log;
+use App\Services\SitioService;
 
 class SitioController extends Controller
 {
@@ -21,21 +22,9 @@ class SitioController extends Controller
     }
 
     public function index(){
-        $users = User::with('donations')->first();
-        //dd($users->donations->first()->monto);
+        $totales = SitioService::getTotales();
 
-        $totalDonations = DB::table('donations')
-            ->selectRaw('sum(monto) as total')
-            ->first();
-
-            $donations = DB::table('donations as d')
-            ->join('users as u', 'd.user_id', '=', 'u.id')
-            ->selectRaw('sum(d.monto) as cuenta, DATE_FORMAT(d.created_at, "%d-%c-%Y") as fecha')
-            ->orderByDesc('fecha')
-            ->groupBy('fecha')
-            ->get();
-
-        return view('index', compact('donations', 'totalDonations'));
+        return view('index', compact('totales'));
     }
 
     public function config(){

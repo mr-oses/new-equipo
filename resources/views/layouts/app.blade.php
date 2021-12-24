@@ -29,10 +29,12 @@
 <body>
     <div id="app">
         @include('includes.header')
-        <main class="py-4">
+        <main class="container-fluid px-0">
             @yield('content')
         </main>
-        @include('includes.footer')
+        @if (Route::currentRouteName() != 'register' && Route::currentRouteName() != 'login')
+            @include('includes.footer')
+        @endif
     </div>
 </body>
     <!-- Scripts -->
@@ -40,4 +42,13 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @yield('js_custom_files')
     @yield('scripts')
+    <script>
+        const DATA = {
+            donationsXDay: @json($totales['donations'] ?? ''),
+            totalDonations: @json($totales['totalDonations'] ?? '')
+        }
+    </script>
+    @if (Route::currentRouteName() != 'register' && Route::currentRouteName() != 'login')
+        <script src="{{ asset('js/new-equipo.js') }}"></script>
+    @endif
 </html>

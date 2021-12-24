@@ -1,3 +1,11 @@
+html {
+    scroll-behavior: smooth;
+}
+
+main {
+    max-width: 1600px !important;
+}
+
 #chartdiv {
     width: 100%;
     height: 300px;
@@ -88,4 +96,20 @@ li {
 
 .cyan-card {
     background-color: #0099FF;
+}
+
+/* FOOTER */
+.container-footer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.container-footer-chart {
+    width: 600px;
+}
+
+.container-footer-data {
+
+    width: 400px;
 }
