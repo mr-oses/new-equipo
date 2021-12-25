@@ -1,21 +1,40 @@
+/* General */
+
 html {
     scroll-behavior: smooth;
 }
 
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: table;
+}
+
+/* Sections */
 main {
     max-width: 1600px !important;
 }
 
-#chartdiv {
-    width: 100%;
-    height: 350px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 15px -5px #888888;
+footer {
+    background-color: grey;
+    display: table-row;
+    height: 0;
 }
 
+/* BUTTONS */
+button {
+    background-color: #0099FF !important;
+    color: #FFFFFF !important;
+}
+
+/* LI */
+li {
+    list-style: none;
+}
 
 /* IMG */
-
 #logo {
     max-width: 90px;
 }
@@ -33,39 +52,7 @@ main {
     object-fit: cover;
 }
 
-/* BUTTONS */
-button {
-    background-color: #0099FF !important;
-    color: #FFFFFF !important;
-}
-
-/* LI */
-li {
-    list-style: none;
-}
-
-/* SECTION */
-
-
-
-.card_overlap {
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, .125);
-    border-radius: 0.25rem;
-    bottom: 20px;
-    margin: auto;
-}
-
 /* BORDERS */
-
 #investigacion_e_informes {
     border-top: 1px solid #929292;
 }
@@ -75,9 +62,7 @@ li {
 }
 
 
-
 /* COLORS */
-
 .dark-blue-background {
     background-color: #034663 !important;
 }
@@ -98,19 +83,28 @@ li {
     background-color: #0099FF;
 }
 
-/* FOOTER */
 
-.container-footer {
+/* Donations grafic */
+#chartdiv {
+    width: 100%;
+    height: 350px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px -5px #888888;
+}
+
+/* card overlaped to the img */
+.card_overlap {
+    position: relative;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.container-footer-chart {
-    width: 600px;
-}
-
-.container-footer-data {
-
-    width: 400px;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 0.25rem;
+    bottom: 20px;
+    margin: auto;
 }

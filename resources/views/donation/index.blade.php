@@ -17,6 +17,8 @@
 
 @section('content')
 
+<!-- TABLA -->
+
 <!-- PONER CONTENIDO ACA -->
 <div class="container">
     <!-- Donation container -->
@@ -59,42 +61,6 @@
                 </table>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-        {{-- <div class="m-auto d-flex justify-content-center">
-            <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Monto</th>
-                    <th scope="col">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    @foreach ($donations as $donation)
-                        <tr>
-                        <th scope="row">{{ date('d-m-Y h:i:s', strtotime($donation->created_at)) }}</th>
-                        <td>${{ $donation->monto }}</td>
-                        <td>
-                            <div class="btn-group">
-                                <a href="{{ route('donations.edit', $donation->id) }}" data-id="{{ $donation->id }}" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Editar Donación"><i class="fa fa-pencil-alt"></i></a>
-                                <a data-id="{{ $donation->id }}" class="btn-delete btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Borrar Donacióncd "><i class="fa fa-trash"></i></a>
-                            </div>
-                        </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-              </table>
-        </div> --}}
-
 </div>
 @endsection
 

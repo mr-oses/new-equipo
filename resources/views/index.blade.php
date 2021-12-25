@@ -74,7 +74,7 @@
 
     <!-- INVESTIGACIÓN E INFORMES -->
     <section id="investigacion_e_informes" class="p-5">
-        <div class="card-body text-center px-5 pt-2 blockquote row">
+        <div class="card-body text-center px-5 pt-2 blockquote row flex-column">
             <h2 class="card-title  cyan-card white-color col-md-4 m-auto p-1">Investigación e informes</h2>
             <p class="card-text  pt-4 m-auto"> <em>El trabajo de UNICEF se basa en datos empíricos, una investigación rigurosa y un análisis minucioso.</em></p>
             <p class=" col-md-8 mt-2 mx-auto">UNICEF combina la experiencia, las pruebas y el análisis con el fin de crear campañas, informes y programas en los lugares donde resulten más necesarios. Lee nuestros informes para ver cómo los datos pueden llevar al cambio.</p>
@@ -225,13 +225,13 @@
         </div>
 
         <!-- actua main -->
-        <div class="container container-footer">
-                <!-- gráfico -->
-            <div class="container-footer-chart h-100 mb-3">
+        <div class="container row row-cols-md-2">
+            <!-- gráfico -->
+            <div class=" h-100 mb-3  m-auto">
                 <div id="chartdiv">
                 </div>
             </div>
-            <div class="container-footer-data">
+            <div class="">
                 <div class="card-body">
                     <div class="row row-cols-2">
                         <p class="card-text col-md-6 w-auto fs-6"> <b>Total de donaciones:</b> </p>
@@ -246,7 +246,6 @@
                         <p class="card-text col-md-6 w-auto fs-6"><b> Falta recaudar:</b></p>
                         <span class="card-text fs-6">
                             ${{ number_format(16000000-$totales['totalDonations'], 2, ',', '.') }}
-                            <!-- ACA HABRÍA QUE IMPLEMENTAR LA RESTA -->
                         </span>
                     </div>
                     <div class="pt-3">
@@ -255,26 +254,27 @@
                         <div class="d-flex justify-content-center">
                             <button class="btn w-25">Doná</button>
                         </div>
-
+                        <i class="fab fa-facebook-square text-primary fa-5"></i>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </section>
 
 @endsection
-    @section('js_custom_files')
-        <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-        <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
-        <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    @stop
+@section('js_custom_files')
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+@stop
 
-    @section('scripts')
-        <script>
 
-        </script>
+@section('scripts')
+<script>
 
-    @endsection
+</script>
+
+@endsection
+
 </html>
