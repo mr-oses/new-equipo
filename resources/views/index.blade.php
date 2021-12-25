@@ -263,22 +263,6 @@
     </div>
 </section>
 
-
-
-
-
-<!-- /Main -->
-<!-- <div class="col-md-8">
-    <h1>Index</h1>
-    <grafico
-<div id="chartdiv"></div>
-</div>
-</div> numero total de donaciones
-<div class="row">
-    <div class="numero" id="numero">
-    </div>
-
-</div> -->
 @endsection
     @section('js_custom_files')
         <script src="https://cdn.amcharts.com/lib/5/index.js"></script>

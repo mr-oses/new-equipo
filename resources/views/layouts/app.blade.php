@@ -35,9 +35,7 @@
         <main class="container-fluid px-0">
             @yield('content')
         </main>
-        @if (Route::currentRouteName() != 'register' && Route::currentRouteName() != 'login')
-            @include('includes.footer')
-        @endif
+        @include('includes.footer')
     </div>
 </body>
     <!-- Scripts -->
