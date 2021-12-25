@@ -230,36 +230,36 @@
                 <div class="h-100 ">
                     <div id="chartdiv">
                     </div>
-            </div>
-            <div class="col-md-6 card h-100 no-border-card">
-                <div class="card-body">
-                    <div class="row row-cols-2">
-                        <p class="card-text col-md-6 w-auto fs-6"> <b>Número total de donaciones:</b> </p>
-                        <div class="numero card-text fs-6" id="numero">
+                </div>
+                <div class="col-md-6 card h-100 no-border-card">
+                    <div class="card-body">
+                        <div class="row row-cols-2">
+                            <p class="card-text col-md-6 w-auto fs-6"> <b>Número total de donaciones:</b> </p>
+                            <div class="numero card-text fs-6" id="numero">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row row-cols-2 ">
-                        <p class="card-text col-md-6 w-auto fs-6"><b> Objetivo del 2022:</b></p>
-                        <span class="card-text fs-6">$16.000.000</span>
-                    </div>
-                    <div class="row row-cols-2">
-                        <p class="card-text col-md-6 w-auto fs-6"><b> Falta recaudar:</b></p>
-                        <span class="card-text fs-6">
-                            <!-- ACA HABRÍA QUE IMPLEMENTAR LA RESTA -->
-                        </span>
-                    </div>
-                    <div class="pt-3">
-                        <h3 class="card-title">Tu aporte salva vidas</h3>
-                        <p class="card-text">Con $50 por día colaborás para incorporar alimentos nutritivos en la vianda de 4 chicas o chicos durante un mes.</p>
-                        <div class="d-flex justify-content-center">
-                            <button class="w-25">Doná</button>
+                        <div class="row row-cols-2 ">
+                            <p class="card-text col-md-6 w-auto fs-6"><b> Objetivo del 2022:</b></p>
+                            <span class="card-text fs-6">$16.000.000</span>
                         </div>
+                        <div class="row row-cols-2">
+                            <p class="card-text col-md-6 w-auto fs-6"><b> Falta recaudar:</b></p>
+                            <span class="card-text fs-6">
+                                <!-- ACA HABRÍA QUE IMPLEMENTAR LA RESTA -->
+                            </span>
+                        </div>
+                        <div class="pt-3">
+                            <h3 class="card-title">Tu aporte salva vidas</h3>
+                            <p class="card-text">Con $50 por día colaborás para incorporar alimentos nutritivos en la vianda de 4 chicas o chicos durante un mes.</p>
+                            <div class="d-flex justify-content-center">
+                                <button class="w-25">Doná</button>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </section>
 
 
@@ -276,20 +276,21 @@
 
 </div> -->
 @endsection
-    @section('js_custom_files')
-        <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-        <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
-        <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    @stop
+@section('js_custom_files')
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+@stop
 
-    @section('scripts')
-        <script>
-            const DATA = {
-                donationsXDay: @json($donations),
-                totalDonations: @json($totalDonations)
-            }
-        </script>
-        <script src="{{ asset('js/new-equipo.js') }}"></script>
-    @endsection
+@section('scripts')
+<script>
+    const DATA = {
+        donationsXDay: @json($donations),
+        totalDonations: @json($totalDonations)
+    }
+</script>
+<script src="{{ asset('js/new-equipo.js') }}"></script>
+@endsection
+
 </html>
