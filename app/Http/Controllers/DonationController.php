@@ -12,8 +12,11 @@ class DonationController extends Controller
 {
     public function index(){
         $totales = SitioService::getTotales();
+        $donations = Donation::where('user_id', Auth::id())
+            ->orderBy('created_at', 'desc')
+            ->get();
 
-        return view('donation.index', compact('totales'));
+        return view('donation.index', compact('totales', 'donations'));
     }
 
     public function create() {
@@ -22,17 +25,12 @@ class DonationController extends Controller
         return view('donation.create', compact('totales'));
     }
 
-    public function create()
-    {
-        return view('donation.create');
-    }
-
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
+        dd($request->all());
         try {
             $donation = new Donation();
             $donation->user()->associate(Auth::user());
-            $donation->monto = $request->montoDonacion;
+            $donation->monto = $request->monto;
             $donation->save();
 
             return redirect()->back()->with('success', 'La donación se realizó correctamente.');
