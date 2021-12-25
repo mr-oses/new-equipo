@@ -246,7 +246,6 @@
                         <p class="card-text col-md-6 w-auto fs-6"><b> Falta recaudar:</b></p>
                         <span class="card-text fs-6">
                             ${{ number_format(16000000-$totales['totalDonations'], 2, ',', '.') }}
-                            <!-- ACA HABRÍA QUE IMPLEMENTAR LA RESTA -->
                         </span>
                     </div>
                     <div class="pt-3">

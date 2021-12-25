@@ -39,26 +39,6 @@
             </div>
         </div>
 
-<<<<<<< HEAD
-    </div>
-    @endsection
-
-    @section('scripts')
-    <script>
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        });
-    </script>
-    @endsection
-=======
         <!-- tabla de donaciones -->
         <div class="col-md-8 m-auto d-flex justify-content-center">
             {{-- <table class="table table-hover ">
@@ -72,15 +52,15 @@
             </table> --}}
             <table class="table table-striped">
                 <thead>
-                  <tr>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Monto</th>
-                    <th scope="col">Acciones</th>
-                  </tr>
+                    <tr>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
                 </thead>
                 <tbody>
                     @foreach ($donations as $donation)
-                        <tr>
+                    <tr>
                         <th scope="row">{{ date('d-m-Y h:i:s', strtotime($donation->created_at)) }}</th>
                         <td>${{ $donation->monto }}</td>
                         <td>
@@ -89,10 +69,10 @@
                                 <a data-id="{{ $donation->id }}" class="btn-delete btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Borrar Donacióncd "><i class="fa fa-trash"></i></a>
                             </div>
                         </td>
-                        </tr>
+                    </tr>
                     @endforeach
                 </tbody>
-              </table>
+            </table>
         </div>
     </div>
 
@@ -114,4 +94,3 @@
     });
 </script>
 @endsection
->>>>>>> aa600a3b481e3ab2359e1d451c623a4fb44a499f

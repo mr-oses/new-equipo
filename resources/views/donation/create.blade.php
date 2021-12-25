@@ -1,82 +1,51 @@
 @extends('layouts.app')
-
+@section('css_custom_files')
+<!-- <link rel="stylesheet" href="{{asset('')}}"> -->
+@endsection
 @section('content')
 <!-- FORMULARIO CON MONTOS -->
 <div class="container pt-3">
     <div class=" flex-column">
         <!-- header -->
         <div class="col text-center">
-            <span class="text-uppercase">Más de la mitad de las chicas y chicos
-                de la Argentina
-                son
-                pobres.</span>
+            <span class="text-uppercase">Más de la mitad de las chicas y chicos Argentina son pobres</span>
             <h3>¡Dona ahora!</h3>
         </div>
         <form id="donacion" action="{{ route('donations.store') }}" method="POST">
             @csrf
             <!-- MONTO A DONAR -->
-            <h6 class="my-3"> Sleccioná el monto de tu donación</h6>
-            <div class="form-group col-12 col-md-12">
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-lg btn-outline-primary">
-                    <input type="radio" name="monto" id="option1" value="300"> $300
+            <h6 class="my-3"> Seleccioná el monto de tu donación</h6>
+            <!-- CONTENEDOR DEL FORM -->
+            <div class="form-group row row-cols-1 m-auto">
+                <!-- primera fila -->
+                <div class="btn-group btn-group-toggle col-md-12 d-flex flex-wrap" data-toggle="buttons">
+                    <label class="btn btn-lg btn-outline-primary mr-5 mb-3 d-flex align-items-center rounded">
+                        <input type="radio" name="monto" id="option1" value="300"> $300
                     </label>
-                    <label class="btn btn-lg btn-outline-primary">
-                    <input type="radio" name="monto" id="option2" value="500"> $500
+                    <label class="btn btn-lg btn-outline-primary mr-5 mb-3 d-flex align-items-center rounded">
+                        <input type="radio" name="monto" id="option2" value="500"> $500
                     </label>
-                    <label class="btn btn-lg btn-outline-primary">
-                    <input type="radio" name="monto" id="option3" value="1000"> $1000
+                    <label class="btn btn-lg btn-outline-primary mr-5 mb-3 d-flex align-items-center rounded">
+                        <input type="radio" name="monto" id="option3" value="1000"> $1000
                     </label>
-                    <label class="btn btn-lg btn-outline-primary">
-                        <input type="radio" name="monto" id="option3" value="3000"> $3000
+                    <label class="btn btn-lg btn-outline-primary mr-5 mb-3 d-flex align-items-center rounded">
+                        <input type="radio" name="monto" id="option4" value="3000"> $3000
                     </label>
-
-                </div>
-            </div>
-               {{--  <div class="form-group col-12 col-md-12">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="montoDonacion" id="montoDonacion1" value="3000">
-                    <label class="form-check-label" for="montoDonacion1">
-                        $3.000
+                    <label class="btn btn-lg btn-outline-primary mb-3 d-flex align-items-center rounded">
+                        <input type="radio" name="monto" id="otroMonto" value="" onclick="toggleDisplay()"> Otro monto
                     </label>
                 </div>
-            </div>
-            <div class="form-group col-12 col-md-12">
-                <div class="form-check">
-                    <label class="form-check-label" for="montoDonacion2">
-                        <input class="form-check-input" type="radio" name="montoDonacion" id="montoDonacion2" value="1000">
-                            $1.000
-                        </label>
+                <!-- segunda fila -->
+                <div class="col-md-12 d-flex justify-content-end">
+                    <label id="otroMontoDiv" class="btn btn-outline-primary align-items-center rounded mt-3 d-none">
+                        <input type="number" class="form-control" placeholder="ARS $" name="montoDonacion" id="otroMontoCant" value="">
+                    </label>
                 </div>
             </div>
-            <div class="form-group col-12 col-md-6">
-                <div class="form-check">
-                    <label class="form-check-label" for="montoDonacion3">
-                        <input class="form-check-input" type="radio" name="montoDonacion" id="montoDonacion3" value="500">
-                            $500
-                        </label>
-                </div>
-            </div>
-            <div class="form-group col-12 col-md-6">
-                <div class="form-check">
-                    <label class="form-check-label" for="montoDonacion4">
-                        <input class="form-check-input" type="radio" name="montoDonacion" id="montoDonacion4" value="300">
-                            $300
-                        </label>
-                </div>
-            </div>
-
-            <div class="form-group col-12 col-md-6">
-                <div class="form-check">
-                    <label class="form-check-label" for="montoDonacion5">
-                        <input class="form-check-input" type="radio" name="montoDonacion" id="otroMonto">Otro monto</label>
-                        <input type="number" class="form-control" placeholder="Otro monto" name="montoDonacion" id="otroMonto" value="">
-                </div>
-            </div> --}}
 
             <!-- FORM FOOTER -->
-            <div class="form-row mt-4">
-                <div class="col-md-4">
+            <div class="form-row mt-4 mb-4">
+                <div class="col-md-4 m-auto">
                     <button type="submit" id="botonDonar" class="btn btn-codo btn-block">Doná</button>
                 </div>
             </div>
@@ -87,13 +56,14 @@
 @endsection
 
 @section('js_custom_files')
-        <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-        <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
-        <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    @stop
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="{{asset('js/donations/create.js')}}"></script>
+@stop
 
-    @section('scripts')
-        <script>
-        </script>
-    @endsection
+@section('scripts')
+<script>
+</script>
+@endsection
