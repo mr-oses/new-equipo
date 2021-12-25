@@ -19,6 +19,9 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <!-- FontAwesome -->
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/new-equipo.css') }}" rel="stylesheet">
@@ -29,16 +32,26 @@
 <body>
     <div id="app">
         @include('includes.header')
-        <main>
+        <main class="container-fluid px-0">
             @yield('content')
         </main>
-        @include('includes.footer')
+        @if (Route::currentRouteName() != 'register' && Route::currentRouteName() != 'login')
+            @include('includes.footer')
+        @endif
     </div>
 </body>
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-@yield('js_custom_files')
-@yield('scripts')
-
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @yield('js_custom_files')
+    @yield('scripts')
+    <script>
+        const DATA = {
+            donationsXDay: @json($totales['donations'] ?? ''),
+            totalDonations: @json($totales['totalDonations'] ?? '')
+        }
+    </script>
+    @if (Route::currentRouteName() != 'register' && Route::currentRouteName() != 'login')
+        <script src="{{ asset('js/new-equipo.js') }}"></script>
+    @endif
 </html>

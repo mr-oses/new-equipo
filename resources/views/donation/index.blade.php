@@ -39,6 +39,7 @@
             </div>
         </div>
 
+<<<<<<< HEAD
     </div>
     @endsection
 
@@ -57,3 +58,60 @@
         });
     </script>
     @endsection
+=======
+        <!-- tabla de donaciones -->
+        <div class="col-md-8 m-auto d-flex justify-content-center">
+            {{-- <table class="table table-hover ">
+                <thead>
+                    <tr class="row row-cols-3">
+                        <th scope="col" class="text-center">Fecha</th>
+                        <th scope="col" class="text-center">Monto</th>
+                        <th scope="col" class="text-center">Modificaciones</th>
+                    </tr>
+                </thead>
+            </table> --}}
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Monto</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @foreach ($donations as $donation)
+                        <tr>
+                        <th scope="row">{{ date('d-m-Y h:i:s', strtotime($donation->created_at)) }}</th>
+                        <td>${{ $donation->monto }}</td>
+                        <td>
+                            <div class="btn-group">
+                                <a href="{{ route('donations.edit', $donation->id) }}" data-id="{{ $donation->id }}" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Editar Donación"><i class="fa fa-pencil-alt"></i></a>
+                                <a data-id="{{ $donation->id }}" class="btn-delete btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Borrar Donacióncd "><i class="fa fa-trash"></i></a>
+                            </div>
+                        </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+              </table>
+        </div>
+    </div>
+
+</div>
+@endsection
+
+@section('scripts')
+<script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    });
+</script>
+@endsection
+>>>>>>> aa600a3b481e3ab2359e1d451c623a4fb44a499f

@@ -9,22 +9,25 @@
         </button>
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#que_hacemos">Qué hacemos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#investigacion_e_informes">Investigación e informes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#historias">Historias</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="registrarse.html">Doná</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-codo" href="#" data-toggle="modal"
-                        data-target="#modalCompra">Contacto</a>
-                </li>
+                @if (Route::currentRouteName() != 'register' && Route::currentRouteName() != 'login')
+                    <li class="nav-item">
+                        <a class="nav-link" href="#que_hacemos">Qué hacemos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#investigacion_e_informes">Investigación e informes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#historias">Historias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('donations.create') }}">Doná</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-codo" href="#" data-toggle="modal"
+                            data-target="#modalCompra">Contacto</a>
+                    </li>
+                @endif
+
                 @guest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
