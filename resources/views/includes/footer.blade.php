@@ -1,5 +1,5 @@
   <!-- Footer -->
-  <footer>
+  <footer class="position-md-fixed">
       <section id="footer" class="navbar navbar-expand-lg navbar-dark bg-dark dark-blue ">
           <div class=" container row collapse navbar-collapse row-col m-auto">
               <div class="col-md-8">

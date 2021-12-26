@@ -30,7 +30,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" class="d-flex flex-column">
         @include('includes.header')
         <!-- TODO unificar los paddings en todas las secciones -->
         <main class="container-fluid">

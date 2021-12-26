@@ -225,13 +225,13 @@
         </div>
 
         <!-- actua main -->
-        <div class="container row row-cols-md-2">
+        <div class="container row row-cols-md-2 m-auto pb-5">
             <!-- gráfico -->
-            <div class=" h-100 mb-3  m-auto">
+            <div class=" h-100 mb-3 col-md-6 m-auto">
                 <div id="chartdiv">
                 </div>
             </div>
-            <div class="">
+            <div class="col-md-6 m-auto">
                 <div class="card-body">
                     <div class="row row-cols-2">
                         <p class="card-text col-md-6 w-auto fs-6"> <b>Total de donaciones:</b> </p>
@@ -251,8 +251,8 @@
                     <div class="pt-3">
                         <h3 class="card-title">Tu aporte salva vidas</h3>
                         <p class="card-text">Con $50 por día colaborás para incorporar alimentos nutritivos en la vianda de 4 chicas o chicos durante un mes.</p>
-                        <div class="d-flex justify-content-center">
-                            <button class="btn w-25">Doná</button>
+                        <div class="d-flex justify-content-center pt-3">
+                            <button class="btn w-50">Doná</button>
                         </div>
                     </div>
                 </div>
@@ -271,7 +271,7 @@
 
 @section('scripts')
 <script>
-
+    $('footer').removeClass('position-md-fixed')
 </script>
 
 @endsection

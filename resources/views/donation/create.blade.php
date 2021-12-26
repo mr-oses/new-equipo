@@ -6,7 +6,8 @@
 <!-- TODO Agregar un boton a "Mis Donaciones"? -->
 <!-- TODO Agregar una card con el valor y fecha de la última donación? -->
 <!-- FORMULARIO CON MONTOS -->
-<div class="container pt-3">
+
+<div class="container pt-5">
     <div class=" flex-column">
         <!-- header -->
         <div class="col text-center">
@@ -55,14 +56,15 @@
     </div>
 </div>
 </div>
+
 @endsection
 
 @section('js_custom_files')
-    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{asset('js/donations/create.js')}}"></script>
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="{{asset('js/donations/create.js')}}"></script>
 @stop
 
 @section('scripts')
