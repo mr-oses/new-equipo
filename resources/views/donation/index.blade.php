@@ -69,6 +69,9 @@
 <script>
     //TODO Migrar el código js al archivo index.js
     //TODO Agregar una card con el total de donaciones del usuario?
+    $(document).ready(function () {
+
+    });
     const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -80,6 +83,17 @@
             toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
     });
+    @if(Session::has('success'))
+        Toast.fire({
+            icon: 'success',
+            title: '{{ Session::get('success') }}'
+        })
+    @elseif(Session::has('error'))
+        Toast.fire({
+            icon: 'error',
+            title: '{{ Session::get('error') }}'
+        })
+    @endif
 
     $('[data-toggle="tooltip"]').tooltip();
 
