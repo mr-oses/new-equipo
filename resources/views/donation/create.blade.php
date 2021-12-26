@@ -13,7 +13,7 @@
             <span class="text-uppercase">Más de la mitad de las chicas y chicos Argentina son pobres</span>
             <h3>¡Dona ahora!</h3>
         </div>
-        <form id="donacion" action="{{ route('donations.store') }}" method="POST">
+        <form id="donacion" {{-- action="{{ route('donations.store') }}" --}} method="POST">
             @csrf
             <!-- MONTO A DONAR -->
             <h6 class="my-3"> Seleccioná el monto de tu donación</h6>
@@ -40,7 +40,7 @@
                 <!-- segunda fila -->
                 <div class="col-md-12 d-flex justify-content-end">
                     <label id="otroMontoDiv" class="btn btn-outline-primary align-items-center rounded mt-3 d-none">
-                        <input type="number" class="form-control" placeholder="ARS $" name="monto" id="otroMontoCant" value="">
+                        <input type="number" class="form-control" placeholder="ARS $" name="monto" id="otroMontoCant" required>
                     </label>
                 </div>
             </div>
@@ -48,12 +48,11 @@
             <!-- FORM FOOTER -->
             <div class="form-row mt-4 mb-4">
                 <div class="col-md-4 m-auto">
-                    <button type="submit" id="botonDonar" class="btn btn-codo btn-block">Doná</button>
+                    <button type="button" id="botonDonar" class="btn btn-codo btn-block">Doná</button>
                 </div>
             </div>
         </form>
     </div>
-</div>
 </div>
 @endsection
 
@@ -62,10 +61,71 @@
     <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{asset('js/donations/create.js')}}"></script>
-@stop
+    @stop
 
-@section('scripts')
-<script>
-</script>
+    @section('scripts')
+    <script>
+       $(document).on("click","#botonDonar",function(event){
+           let btnChecked = $('input[name="monto"]:checked').attr('id');
+           let monto = 0;
+
+           if(btnChecked === 'otroMonto'){
+               monto = $('#otroMontoCant').val();
+            }else{
+                monto = $('input[name="monto"]:checked').val();
+            }
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+
+            Swal.fire({
+                title: "Desea realizar una donación?",
+                text: '$' + monto,
+                icon: "warning",
+                showCancelButton: true,
+                cancelButtonText: 'Cancelar',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Donar',
+            })
+            .then((confirmacion) => {
+                if (confirmacion.value === true) {
+                    let data = {
+                        monto: monto,
+                        _token: '{{ csrf_token() }}',
+                    };
+
+                    $.ajax({
+                        url: '/donations/store',
+                        type: 'POST',
+                        data: data,
+                        success: function(result) {
+                            /* Toast.fire({
+                                icon: 'success',
+                                title: 'La donación se realizó correctamente'
+                            }) */
+                            $(location).attr('href', "{{ route('donations.index') }}")
+
+                        },
+                        error: function (result) {
+                            Toast.fire({
+                                icon: 'error',
+                                title: 'Se produjo un error, intentelo nuevamente más tarde.'
+                            })
+                        }
+                    });
+                }
+            });
+    });
+    </script>
+    <script src="{{asset('js/donations/create.js')}}"></script>
 @endsection

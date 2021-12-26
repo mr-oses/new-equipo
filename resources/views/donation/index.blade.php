@@ -44,7 +44,7 @@
                             <tr>
                                 <td>{{ $donation->id }}</td>
                                 <td>{{ date('d-m-Y', strtotime($donation->created_at)) }}</td>
-                                <td>{{ date('h:i:s', strtotime($donation->created_at)) }}</td>
+                                <td>{{ date('H:i:s', strtotime($donation->created_at)) }}</td>
                                 <td>${{ $donation->monto }}</td>
                                 <td>
                                     <div class="btn-group">
@@ -72,6 +72,7 @@
     $(document).ready(function () {
 
     });
+    /* NOTIFICACIONES */
     const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -83,6 +84,7 @@
             toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
     });
+
     @if(Session::has('success'))
         Toast.fire({
             icon: 'success',
@@ -94,7 +96,9 @@
             title: '{{ Session::get('error') }}'
         })
     @endif
+    /* FIN NOTIFICACIONES */
 
+    /* TABLA DE DONACIONES */
     $('[data-toggle="tooltip"]').tooltip();
 
     var tableDonations = $('#tableDonations').DataTable(
@@ -119,6 +123,7 @@
             ],
         }
     );
+    /* FIN TABLA DE DONAIONES */
 
     $(document).on("click","a.btn-delete",function(event){
         let id = $(this).data('id');

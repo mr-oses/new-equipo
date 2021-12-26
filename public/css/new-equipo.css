@@ -108,3 +108,7 @@ li {
     bottom: 20px;
     margin: auto;
 }
+
+button.swal2-cancel {
+    background-color: #e3342f !important;
+}
