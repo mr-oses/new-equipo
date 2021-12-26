@@ -26,5 +26,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/donations/store', 'DonationController@store')->name('donations.store');
     Route::get('/donations/{id}/edit', 'DonationController@edit')->name('donations.edit');
     Route::post('/donations/{id}', 'DonationController@update')->name('donations.update');
-    Route::post('/donations/{id}/destroy', 'DonationController@destroy')->name('donations.destroy'); //TODO Ver de implementar con AJAX.
+    Route::get('/donations/{id}/destroy', 'DonationController@destroy')->name('donations.destroy');
 });

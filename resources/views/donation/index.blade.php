@@ -3,7 +3,6 @@
 @section('css_custom_files')
     <link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="{{ asset('css/donations/index.css') }}" rel="stylesheet">
-    {{-- <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css" rel="stylesheet"> --}}
 @endsection
 
 @section('js_custom_files')
@@ -11,8 +10,6 @@
     <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
     <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    {{-- <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script> --}}
-
 @stop
 
 @section('content')
@@ -20,7 +17,7 @@
 <!-- TABLA -->
 
 <!-- PONER CONTENIDO ACA -->
-<div class="container">
+<div class="container py-5">
     <!-- Donation container -->
     <!-- Table container -->
         <!-- header -->
@@ -52,7 +49,7 @@
                                 <td>
                                     <div class="btn-group">
                                         <a href="{{ route('donations.edit', $donation->id) }}" data-id="{{ $donation->id }}" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Editar Donación"><i class="fa fa-pencil-alt"></i></a>
-                                        <a data-id="{{ $donation->id }}" class="btn-delete btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Borrar Donación"><i class="fa fa-trash"></i></a>
+                                        <a data-id="{{ $donation->id }}" class="btn-delete btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Eliminar Donación"><i class="fa fa-trash"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -70,6 +67,8 @@
 
 @section('scripts')
 <script>
+    //TODO Migrar el código js al archivo index.js
+    //TODO Agregar una card con el total de donaciones del usuario?
     const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -84,27 +83,67 @@
 
     $('[data-toggle="tooltip"]').tooltip();
 
-            var tableDonations = $('#tableDonations').DataTable(
-                {
-                    "paging": true,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": true,
-                    "info": true,
-                    "autoWidth": true,
-                    "responsive": true,
-                    "order": [[ 1, "desc" ]],
-                    "language": {
-                        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+    var tableDonations = $('#tableDonations').DataTable(
+        {
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true,
+            "responsive": true,
+            "order": [[ 1, "desc" ]],
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+            },
+            "columnDefs": [
+                { targets: 0, orderable : false, visible : false },
+                { targets: 1, orderable : true, width : "200px", className : "text-center" },
+                { targets: 2, orderable : true, width : "200px", className : "text-center"},
+                { targets: -2, orderable : true, width : "70px", className : "text-right" },
+                { targets: -1, orderable : false, width : "70px", className : "text-center" },
+            ],
+        }
+    );
+
+    $(document).on("click","a.btn-delete",function(event){
+        let id = $(this).data('id');
+        let row = $(this).closest('tr');
+        console.log(id);
+        Swal.fire({
+            title: "Desea eliminar la donación?",
+            //text: $(this).data('nombre'),
+            icon: "warning",
+            showCancelButton: true,
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: 'Eliminar',
+        })
+        .then((confirmacion) => {
+            if (confirmacion.value === true) {
+                $.ajax({
+                    url: '/donations/'+ id +'/destroy',
+                    type: 'GET',
+                    data: {
+                        id: id,
+                        _token: '{{ csrf_token() }}',
                     },
-                    "columnDefs": [
-                        { targets: 0, orderable : false, visible : false },
-                        { targets: 1, orderable : true, width : "200px", className : "text-center" },
-                        { targets: 2, orderable : true, width : "200px", className : "text-center"},
-                        { targets: -2, orderable : true, width : "70px", className : "text-right" },
-                        { targets: -1, orderable : false, width : "70px", className : "text-center" },
-                    ],
-                }
-            );
+                    success: function(result) {
+                        row.remove();
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'La donación se eliminó correctamente'
+                        })
+
+                    },
+                    error: function (result) {
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Se produjo un error, intentelo nuevamente más tarde.'
+                        })
+                    }
+                });
+            }
+        });
+    });
 </script>
 @endsection

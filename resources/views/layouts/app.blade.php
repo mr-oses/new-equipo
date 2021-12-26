@@ -32,6 +32,7 @@
 <body>
     <div id="app">
         @include('includes.header')
+        <!-- TODO unificar los paddings en todas las secciones -->
         <main class="container-fluid px-0">
             @yield('content')
         </main>
@@ -44,6 +45,14 @@
     @yield('js_custom_files')
     @yield('scripts')
     <script>
+        $(document).ready(function () {
+            $(document).on("click",".nav-link-custom",function(event){
+                let section = $(this).attr('href');
+                let uri = '/'+section;
+                $(location).attr('href',uri);
+            });
+        });
+
         const DATA = {
             donationsXDay: @json($totales['donations'] ?? ''),
             totalDonations: @json($totales['totalDonations'] ?? '')

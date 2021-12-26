@@ -9,24 +9,21 @@
         </button>
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav ml-auto">
-                @if (Route::currentRouteName() != 'register' && Route::currentRouteName() != 'login')
-                    <li class="nav-item">
-                        <a class="nav-link" href="#que_hacemos">Qué hacemos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#investigacion_e_informes">Investigación e informes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#historias">Historias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('donations.create') }}">Doná</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-codo" href="#" data-toggle="modal"
-                            data-target="#modalCompra">Contacto</a>
-                    </li>
-                @endif
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom" href="#que_hacemos">Qué hacemos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom" href="#investigacion_e_informes">Investigación e informes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom" href="#historias">Historias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom" href="{{ route('donations.create') }}">Doná</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-codo nav-link-custom" href="#" data-toggle="modal" data-target="#modalCompra">Contacto</a>
+                </li>
 
                 @guest
                     <li class="nav-item">

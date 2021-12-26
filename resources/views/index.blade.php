@@ -254,7 +254,6 @@
                         <div class="d-flex justify-content-center">
                             <button class="btn w-25">Doná</button>
                         </div>
-                        <i class="fab fa-facebook-square text-primary fa-5"></i>
                     </div>
                 </div>
             </div>
