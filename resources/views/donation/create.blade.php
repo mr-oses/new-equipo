@@ -6,7 +6,8 @@
 <!-- TODO Agregar un boton a "Mis Donaciones"? -->
 <!-- TODO Agregar una card con el valor y fecha de la última donación? -->
 <!-- FORMULARIO CON MONTOS -->
-<div class="container pt-3">
+
+<div class="container pt-5">
     <div class=" flex-column">
         <!-- header -->
         <div class="col text-center">

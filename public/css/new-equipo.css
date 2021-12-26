@@ -4,24 +4,25 @@ html {
     scroll-behavior: smooth;
 }
 
-html,
+/* Sections */
 body {
-    height: 100%;
-    width: 100%;
     margin: 0;
-    display: table;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
-/* Sections */
 main {
+    display: block;
     max-width: 1600px !important;
+
 }
 
 footer {
-    background-color: grey;
-    display: table-row;
-    height: 0;
+    bottom: 0;
+    width: 100%;
 }
+
 
 /* BUTTONS */
 button {
@@ -111,4 +112,48 @@ li {
 
 button.swal2-cancel {
     background-color: #e3342f !important;
+/* ---------------------------------------------------------- */
+/* MEDIA QUERYS */
+@media (min-width: 576px) and(min-height: 700px) {
+    .position-sm-static {
+        position: static !important;
+    }
+
+    .position-sm-relative {
+        position: relative !important;
+    }
+
+    .position-sm-absolute {
+        position: absolute !important;
+    }
+
+    .position-sm-fixed {
+        position: fixed !important;
+    }
+
+    .position-sm-sticky {
+        position: sticky !important;
+    }
+}
+
+@media (min-width: 768px) and (min-height: 700px) {
+    .position-md-static {
+        position: static !important;
+    }
+
+    .position-md-relative {
+        position: relative !important;
+    }
+
+    .position-md-absolute {
+        position: absolute !important;
+    }
+
+    .position-md-fixed {
+        position: fixed !important;
+    }
+
+    .position-md-sticky {
+        position: sticky !important;
+    }
 }
