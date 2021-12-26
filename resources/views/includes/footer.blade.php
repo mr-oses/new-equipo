@@ -1,6 +1,6 @@
   <!-- Footer -->
   <footer>
-      <section id="footer" class="navbar navbar-expand-lg navbar-dark bg-dark dark-blue">
+      <section id="footer" class="navbar navbar-expand-lg navbar-dark bg-dark dark-blue ">
           <div class=" container row collapse navbar-collapse row-col m-auto">
               <div class="col-md-8">
                   <ul class="navbar-nav">
@@ -42,5 +42,5 @@
                   </div>
               </div>
           </div>
-        </section>
+      </section>
   </footer>

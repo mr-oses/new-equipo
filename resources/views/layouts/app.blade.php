@@ -33,32 +33,33 @@
     <div id="app">
         @include('includes.header')
         <!-- TODO unificar los paddings en todas las secciones -->
-        <main class="container-fluid px-0">
+        <main class="container-fluid">
             @yield('content')
         </main>
         @include('includes.footer')
     </div>
 </body>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    @yield('js_custom_files')
-    @yield('scripts')
-    <script>
-        $(document).ready(function () {
-            $(document).on("click",".nav-link-custom",function(event){
-                let section = $(this).attr('href');
-                let uri = '/'+section;
-                $(location).attr('href',uri);
-            });
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@yield('js_custom_files')
+@yield('scripts')
+<script>
+    $(document).ready(function() {
+        $(document).on("click", ".nav-link-custom", function(event) {
+            let section = $(this).attr('href');
+            let uri = '/' + section;
+            $(location).attr('href', uri);
         });
+    });
 
-        const DATA = {
-            donationsXDay: @json($totales['donations'] ?? ''),
-            totalDonations: @json($totales['totalDonations'] ?? '')
-        }
-    </script>
-    @if (Route::currentRouteName() != 'register' && Route::currentRouteName() != 'login')
-        <script src="{{ asset('js/new-equipo.js') }}"></script>
-    @endif
+    const DATA = {
+        donationsXDay: @json($totales['donations'] ?? ''),
+        totalDonations: @json($totales['totalDonations'] ?? '')
+    }
+</script>
+@if (Route::currentRouteName() != 'register' && Route::currentRouteName() != 'login')
+<script src="{{ asset('js/new-equipo.js') }}"></script>
+@endif
+
 </html>

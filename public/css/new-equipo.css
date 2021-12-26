@@ -4,24 +4,52 @@ html {
     scroll-behavior: smooth;
 }
 
-html,
+/* copiado de aca */
+body {
+    height: 100vh;
+    margin: 0;
+}
+
+header {
+    min-height: 50px;
+    background: lightcyan;
+}
+
+footer {
+    min-height: 50px;
+    background: PapayaWhip;
+}
+
+/* Trick */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
+}
+
+/* hasta aca */
+
+/* html,
 body {
     height: 100%;
     width: 100%;
     margin: 0;
     display: table;
-}
+} */
 
 /* Sections */
 main {
     max-width: 1600px !important;
 }
 
-footer {
+/* footer {
     background-color: grey;
     display: table-row;
     height: 0;
-}
+} */
 
 /* BUTTONS */
 button {
