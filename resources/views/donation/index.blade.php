@@ -60,33 +60,6 @@
 
         <!-- tabla de donaciones -->
 
-        <table id="tableDonations" class="table table-hover w-100 mb-3">
-            <thead class="cyan-card text-white">
-                <tr class="text-center">
-                    <th>Id</th>
-                    <th>Fecha</th>
-                    <th>Hora</th>
-                    <th>Monto</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($donations as $donation)
-                <tr>
-                    <td>{{ $donation->id }}</td>
-                    <td>{{ date('d-m-Y', strtotime($donation->created_at)) }}</td>
-                    <td>{{ date('h:i:s', strtotime($donation->created_at)) }}</td>
-                    <td>${{ $donation->monto }}</td>
-                    <td>
-                        <div class="btn-group">
-                            <a href="{{ route('donations.edit', $donation->id) }}" data-id="{{ $donation->id }}" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Editar Donación"><i class="fa fa-pencil-alt"></i></a>
-                            <a data-id="{{ $donation->id }}" class="btn-delete btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Eliminar Donación"><i class="fa fa-trash"></i></a>
-                        </div>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
     </div>
 </div>
 @endsection
@@ -116,18 +89,21 @@
     });
 
     @if(Session::has('success'))
-    Toast.fire({
-        icon: 'success',
-        title: '{{ Session::get('
-        success ') }}'
-    })
+        Toast.fire({
+            icon: 'success',
+            title: '{{ Session::get('success') }}'
+        })
     @elseif(Session::has('error'))
-    Toast.fire({
-        icon: 'error',
-        title: '{{ Session::get('
-        error ') }}'
-    })
+        Toast.fire({
+            icon: 'error',
+            title: '{{ Session::get('error') }}'
+        })
     @endif
+
+    @php
+        Session::forget(['success', 'error']);
+    @endphp
+
     /* FIN NOTIFICACIONES */
 
     /* TABLA DE DONACIONES */
@@ -147,18 +123,13 @@
         "language": {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
         },
-        "columnDefs": [{
-                targets: 0,
-                orderable: false,
-                visible: false
-            },
-            "columnDefs": [
-                { targets: 0, orderable : false, visible : false },
-                { targets: 1, orderable : true, width : "200px", className : "text-center" },
-                { targets: 2, orderable : true, width : "200px", className : "text-center"},
-                { targets: -2, orderable : true, width : "70px", className : "text-right" },
-                { targets: -1, orderable : false, width : "70px", className : "text-center" },
-            ],
+        "columnDefs": [
+            { targets: 0, orderable : false, visible : false },
+            { targets: 1, orderable : true, width : "200px", className : "text-center" },
+            { targets: 2, orderable : true, width : "200px", className : "text-center"},
+            { targets: -2, orderable : true, width : "70px", className : "text-right" },
+            { targets: -1, orderable : false, width : "70px", className : "text-center" },
+        ],
         }
     );
     /* FIN TABLA DE DONAIONES */
@@ -166,10 +137,8 @@
     $(document).on("click", "a.btn-delete", function(event) {
         let id = $(this).data('id');
         let row = $(this).closest('tr');
-        console.log(id);
         Swal.fire({
                 title: "Desea eliminar la donación?",
-                //text: $(this).data('nombre'),
                 icon: "warning",
                 showCancelButton: true,
                 cancelButtonText: 'Cancelar',
@@ -190,7 +159,6 @@
                                 icon: 'success',
                                 title: 'La donación se eliminó correctamente'
                             })
-
                         },
                         error: function(result) {
                             Toast.fire({

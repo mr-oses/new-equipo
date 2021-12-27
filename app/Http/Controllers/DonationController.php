@@ -32,9 +32,8 @@ class DonationController extends Controller
             $donation->monto = $request->monto;
             $donation->save();
             session(['success'=>'La donación se realizó correctamente.']);
-            /* return redirect()->route('donations.index')->with('success', 'La donación se realizó correctamente.'); */
         } catch (Exception $e) {
-            /* return redirect()->route('donations.index')->with('error', 'Se produjo un error al intentar realizar la donación.'); */
+            session(['error'=>'Se produjo un error al intentar realizar la donación.']);
         }
     }
 
@@ -52,9 +51,9 @@ class DonationController extends Controller
             $donation->monto = $request->monto;
             $donation->save();
 
-            return redirect()->back()->with('success', 'La donación se actualizó correctamente.');
+            session(['success'=>'La donación se modificó correctamente.']);
         } catch (Exception $e) {
-            return redirect()->back()->with('error', 'Se produjo un error al intentar actualizar la donación.');
+            session(['error'=>'Se produjo un error al intentar modificar la donación.']);
         }
     }
 

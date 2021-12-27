@@ -32,7 +32,7 @@
               </div>
               <div class="col-md-4 m-auto d-flex align-items-start ">
                   <div class="d-flex justify-contet-center flex-column m-auto">
-                      <button class="btn mb-3 mt-2">Hazte donante</button>
+                      <a href="{{ route('register') }}" class="btn cyan-card text-white mb-3 mt-2">Hazte donante</a>
                       <div>
                           <a href="https://www.facebook.com/unicefenespanol" target="_blank"><i class="fab fa-facebook-square text-primary fa-3x"></i></a>
                           <a href="https://twitter.com/UNICEFenEspanol" target="_blank"><i class="fab fa-twitter-square text-primary fa-3x"></i></a>

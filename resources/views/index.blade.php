@@ -252,7 +252,7 @@
                         <h3 class="card-title">Tu aporte salva vidas</h3>
                         <p class="card-text">Con $50 por día colaborás para incorporar alimentos nutritivos en la vianda de 4 chicas o chicos durante un mes.</p>
                         <div class="d-flex justify-content-center pt-3">
-                            <button class="btn w-50">Doná</button>
+                            <a href="{{ route('donations.create') }}" class="btn cyan-card text-white w-50">Doná</a>
                         </div>
                     </div>
                 </div>

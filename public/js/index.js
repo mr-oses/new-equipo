@@ -89,7 +89,7 @@ $(document).ready(function () {
     series.columns.template.setAll({
         cornerRadiusTL: 5,
         cornerRadiusTR: 5,
-        width: 50,
+        /* width: 50, */
     });
 
     series.columns.template.adapters.add("fill", (fill, target) => {
