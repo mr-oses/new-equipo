@@ -26,6 +26,19 @@
             <h3 class="dark-pink-color text-center"><b>Registro de donaciones</b></h3>
             <p class="text-center">Argentina 2021</p>
         </div>
+        <!-- mis donaciones -->
+        <div class="card mb-5 mt-5 blur-shadow">
+            <div class="card-body display-column m-auto">
+                <h5 class="card-title">¡Gracias! </h5>
+                <p class="card-text small-margin-bottom">Cada contribución mejora la calidad de vida de los chicos y chicas que más lo necesitan </p>
+                <div class="">
+                    <span>Este es el monto total de tus donaciones:</span>
+                    <!-- TODO implementar el numero total de donaciones aca abajo-->
+                    <span>$</span>
+                </div>
+                <a href="#" class="btn btn-primary mt-3">Hacer otro aporte</a>
+            </div>
+        </div>
 
         <!-- tabla de donaciones -->
         <div class="">
@@ -58,21 +71,6 @@
             </table>
         </div>
     </div>
-    <!-- mis donaciones -->
-    <div class="card mb-5 mt-5 blur-shadow">
-        <div class="card-body display-column m-auto">
-            <h5 class="card-title">¡Gracias! </h5>
-            <p class="card-text small-margin-bottom">Cada contribución mejora la calidad de vida de los chicos y chicas que más lo necesitan </p>
-            <div class="">
-                <span>Este es el monto total de tus donaciones:</span>
-                <!-- TODO implementar el numero total de donaciones aca abajo-->
-                <span>$</span>
-            </div>
-            <a href="#" class="btn btn-primary mt-3">Hacer otro aporte</a>
-        </div>
-    </div>
-
-    <!-- tabla de donaciones -->
 
 </div>
 </div>
