@@ -73,7 +73,7 @@
     </section>
 
     <!-- INVESTIGACIÓN E INFORMES -->
-    <section id="investigacion_e_informes" class="p-5">
+    <section id="investigacion_e_informes" class="p-5 margin-top-solid">
         <div class="card-body text-center px-5 pt-2 blockquote row flex-column">
             <h2 class="card-title  cyan-card white-color col-md-4 m-auto p-1">Investigación e informes</h2>
             <p class="card-text  pt-4 m-auto"> <em>El trabajo de UNICEF se basa en datos empíricos, una investigación rigurosa y un análisis minucioso.</em></p>

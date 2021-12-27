@@ -34,8 +34,8 @@
                   <div class="d-flex justify-contet-center flex-column m-auto">
                       <button class="btn mb-3 mt-2">Hazte donante</button>
                       <div>
-                          <a href="https://www.facebook.com/unicefenespanol" target="_blank"><i class="fab fa-facebook-square text-primary fa-3x"></i></a>
-                          <a href="https://twitter.com/UNICEFenEspanol" target="_blank"><i class="fab fa-twitter-square text-primary fa-3x"></i></a>
+                          <a href="https://www.facebook.com/unicefenespanol" target="_blank"><i class="fab fa-facebook-square fa-3x"></i></a>
+                          <a href="https://twitter.com/UNICEFenEspanol" target="_blank"><i class="fab fa-twitter-square fa-3x"></i></a>
                           <a href="https://www.youtube.com/user/unicefespanol" target="_blank"><i class="fab fa-youtube-square fa-3x"></i></a>
                           <a href="https://www.linkedin.com/company/unicef/" target="_blank"><i class="fab fa-linkedin fa-3x"></i></a>
                       </div>
