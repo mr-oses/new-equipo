@@ -122,10 +122,9 @@ li {
     margin: auto;
 }
 
-/* mis donaciones card*/
-/* #misDonacionesCard {
-    background-image: linear-gradient(180deg, #034663, #0099FF);
-} */
+button.swal2-cancel {
+    background-color: #e3342f !important;
+}
 
 /* ---------------------------------------------------------- */
 /* MEDIA QUERYS */

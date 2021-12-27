@@ -252,7 +252,7 @@
                         <h3 class="card-title">Tu aporte salva vidas</h3>
                         <p class="card-text">Con $50 por día colaborás para incorporar alimentos nutritivos en la vianda de 4 chicas o chicos durante un mes.</p>
                         <div class="d-flex justify-content-center pt-3">
-                            <button class="btn w-50">Doná</button>
+                            <a href="{{ route('donations.create') }}" class="btn cyan-card text-white w-50">Doná</a>
                         </div>
                     </div>
                 </div>
@@ -266,6 +266,7 @@
 <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="{{ asset('js/index.js') }}"></script>
 @stop
 
 
