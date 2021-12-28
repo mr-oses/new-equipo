@@ -3,7 +3,6 @@
 
 @endsection
 @section('content')
-<!-- TODO Agregar una card con el valor y fecha de la última donación? -->
 <!-- FORMULARIO CON MONTOS -->
 
 <div class="container pt-5">
@@ -131,16 +130,23 @@
                             $(location).attr('href', "{{ route('donations.index') }}")
                         },
                         error: function (result) {
-                            Toast.fire({
-                                icon: 'error',
-                                title: 'Se produjo un error, intentelo nuevamente más tarde.'
-                            })
+                            if(result.responseJSON.errors){
+                                Toast.fire({
+                                    icon: 'error',
+                                    title: result.responseJSON.errors.monto[0]
+                                })
+                            }
+                            else{
+                                Toast.fire({
+                                    icon: 'error',
+                                    title: 'Se produjo un error, intentelo más tarde'
+                                })
+                            }
                         }
                     });
                 }
             });
     });
     </script>
-    <script src="{{asset('js/donations/create.js')}}"></script>
 @endsection
 

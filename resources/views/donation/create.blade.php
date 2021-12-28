@@ -3,8 +3,6 @@
 <!-- <link rel="stylesheet" href="{{asset('')}}"> -->
 @endsection
 @section('content')
-<!-- TODO Agregar un boton a "Mis Donaciones"? -->
-<!-- TODO Agregar una card con el valor y fecha de la última donación? -->
 <!-- FORMULARIO CON MONTOS -->
 
 <div class="container pt-5">
@@ -38,10 +36,15 @@
                         <input type="radio" name="monto" id="otroMonto" value="" class="montoCustom"> Otro monto
                     </label>
                 </div>
+                @error('monto')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
                 <!-- segunda fila -->
                 <div class="col-md-12 d-flex justify-content-end">
                     <label id="otroMontoDiv" class="btn btn-outline-primary align-items-center rounded mt-3 d-none">
-                        <input type="number" class="form-control" placeholder="ARS $" name="monto" id="otroMontoCant" required>
+                        <input type="number" class="form-control" placeholder="ARS $" name="monto" id="otroMontoCant">
                     </label>
                 </div>
             </div>
@@ -66,7 +69,8 @@
 
     @section('scripts')
     <script>
-       $(document).on("click","#botonDonar",function(event){
+        $('#botonDonar').attr('disabled', true)
+        $(document).on("click","#botonDonar",function(event){
            let btnChecked = $('input[name="monto"]:checked').attr('id');
            let monto = 0;
 
@@ -75,6 +79,8 @@
             }else{
                 monto = $('input[name="monto"]:checked').val();
             }
+
+
 
             const Toast = Swal.mixin({
                 toast: true,
@@ -87,6 +93,14 @@
                     toast.addEventListener('mouseleave', Swal.resumeTimer)
                 }
             });
+
+            if(monto === undefined){
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Debe seleccionar un monto a donar.'
+                })
+
+            }
 
             Swal.fire({
                 title: "Desea realizar una donación?",
@@ -110,23 +124,26 @@
                         type: 'POST',
                         data: data,
                         success: function(result) {
-                            /* Toast.fire({
-                                icon: 'success',
-                                title: 'La donación se realizó correctamente'
-                            }) */
                             $(location).attr('href', "{{ route('donations.index') }}")
 
                         },
                         error: function (result) {
-                            Toast.fire({
-                                icon: 'error',
-                                title: 'Se produjo un error, intentelo nuevamente más tarde.'
-                            })
+                            if(result.responseJSON.errors){
+                                Toast.fire({
+                                    icon: 'error',
+                                    title: result.responseJSON.errors.monto[0]
+                                })
+                            }
+                            else{
+                                Toast.fire({
+                                    icon: 'error',
+                                    title: 'Se produjo un error, intentelo más tarde'
+                                })
+                            }
                         }
                     });
                 }
             });
-    });
+        });
     </script>
-    <script src="{{asset('js/donations/create.js')}}"></script>
 @endsection

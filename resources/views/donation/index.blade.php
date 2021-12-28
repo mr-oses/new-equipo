@@ -27,16 +27,15 @@
             <p class="text-center">Argentina 2021</p>
         </div>
         <!-- mis donaciones -->
-        <div class="card mb-5 mt-5 blur-shadow">
+        <div class="card mb-5 mt-3 blur-shadow">
             <div class="card-body display-column m-auto">
                 <h5 class="card-title">¡Gracias! </h5>
                 <p class="card-text small-margin-bottom">Cada contribución mejora la calidad de vida de los chicos y chicas que más lo necesitan </p>
                 <div class="">
                     <span>Este es el monto total de tus donaciones:</span>
-                    <!-- TODO implementar el numero total de donaciones aca abajo-->
-                    <span>$</span>
+                    <span>${{ number_format($acumulado->total, 2, ',', '.') }}</span>
                 </div>
-                <a href="#" class="btn btn-primary mt-3">Hacer otro aporte</a>
+                <a href="{{ route('donations.create') }}" class="btn cyan-card text-white mt-3">Hacer otro aporte</a>
             </div>
         </div>
 
@@ -82,11 +81,6 @@
 
 @section('scripts')
 <script>
-    //TODO Migrar el código js al archivo index.js
-    //TODO Agregar una card con el total de donaciones del usuario?
-    $(document).ready(function() {
-
-    });
     /* NOTIFICACIONES */
     const Toast = Swal.mixin({
         toast: true,
@@ -103,108 +97,20 @@
     @if(Session::has('success'))
     Toast.fire({
         icon: 'success',
-        title: '{{ Session::get('
-        success ') }}'
+        title: '{{ Session::get('success') }}'
     })
     @elseif(Session::has('error'))
     Toast.fire({
         icon: 'error',
-        title: '{{ Session::get('
-        error ') }}'
+        title: '{{ Session::get('error') }}'
     })
     @endif
-
     @php
-    Session::forget(['success', 'error']);
+        Session::forget(['success', 'error']);
     @endphp
 
+
     /* FIN NOTIFICACIONES */
-
-    /* TABLA DE DONACIONES */
-    $('[data-toggle="tooltip"]').tooltip();
-
-    var tableDonations = $('#tableDonations').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": true,
-        "responsive": true,
-        "order": [
-            [1, "desc"]
-        ],
-        "language": {
-            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-        },
-        "columnDefs": [{
-                targets: 0,
-                orderable: false,
-                visible: false
-            },
-            {
-                targets: 1,
-                orderable: true,
-                width: "200px",
-                className: "text-center"
-            },
-            {
-                targets: 2,
-                orderable: true,
-                width: "200px",
-                className: "text-center"
-            },
-            {
-                targets: -2,
-                orderable: true,
-                width: "70px",
-                className: "text-right"
-            },
-            {
-                targets: -1,
-                orderable: false,
-                width: "70px",
-                className: "text-center"
-            },
-        ],
-    });
-    /* FIN TABLA DE DONAIONES */
-
-    $(document).on("click", "a.btn-delete", function(event) {
-        let id = $(this).data('id');
-        let row = $(this).closest('tr');
-        Swal.fire({
-                title: "Desea eliminar la donación?",
-                icon: "warning",
-                showCancelButton: true,
-                cancelButtonText: 'Cancelar',
-                confirmButtonText: 'Eliminar',
-            })
-            .then((confirmacion) => {
-                if (confirmacion.value === true) {
-                    $.ajax({
-                        url: '/donations/' + id + '/destroy',
-                        type: 'GET',
-                        data: {
-                            id: id,
-                            _token: '{{ csrf_token() }}',
-                        },
-                        success: function(result) {
-                            row.remove();
-                            Toast.fire({
-                                icon: 'success',
-                                title: 'La donación se eliminó correctamente'
-                            })
-                        },
-                        error: function(result) {
-                            Toast.fire({
-                                icon: 'error',
-                                title: 'Se produjo un error, intentelo nuevamente más tarde.'
-                            })
-                        }
-                    });
-                }
-            });
-    });
 </script>
+<script src="{{ asset('js/donations/index.js') }}"></script>
 @endsection

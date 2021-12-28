@@ -22,7 +22,7 @@
                     <a class="nav-link nav-link-custom" href="{{ route('donations.create') }}">Doná</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-codo nav-link-custom" href="#" data-toggle="modal" data-target="#modalCompra">Contacto</a>
+                    <a class="nav-link text-codo nav-link-custom" href="#">Contacto</a>
                 </li>
 
                 @guest

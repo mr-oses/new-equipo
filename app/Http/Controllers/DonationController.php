@@ -4,19 +4,27 @@ namespace App\Http\Controllers;
 
 use Exception;
 use App\Donation;
+use App\Http\Requests\Donation\FormDonation;
 use Illuminate\Http\Request;
 use App\Services\SitioService;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class DonationController extends Controller
 {
     public function index(){
         $totales = SitioService::getTotales();
+
+        $acumulado = DB::table('donations as d')
+        ->join('users as u', 'd.user_id', '=', 'u.id')
+        ->selectRaw('sum(d.monto) as total')
+        ->where('u.id', Auth::id())
+        ->first();
+
         $donations = Donation::where('user_id', Auth::id())
             ->orderBy('created_at', 'desc')
             ->get();
-
-        return view('donation.index', compact('totales', 'donations'));
+        return view('donation.index', compact('totales', 'donations', 'acumulado'));
     }
 
     public function create() {
@@ -25,7 +33,7 @@ class DonationController extends Controller
         return view('donation.create', compact('totales'));
     }
 
-    public function store(Request $request) {
+    public function store(FormDonation $request) {
         try {
             $donation = new Donation();
             $donation->user()->associate(Auth::user());
@@ -44,7 +52,7 @@ class DonationController extends Controller
         return view('donation.edit', compact('donation'));
     }
 
-    public function update(Request $request, $id)
+    public function update(FormDonation $request, $id)
     {
         try {
             $donation = Donation::findOrFail($id);
